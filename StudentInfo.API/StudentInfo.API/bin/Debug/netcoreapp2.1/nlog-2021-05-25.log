@@ -1,0 +1,101 @@
+2021-05-25 22:47:31.1597|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.1.14-servicing-32113 initialized 'StudentInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-05-25 22:48:05.6706|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.1.14-servicing-32113 initialized 'StudentInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-05-25 22:48:30.8443|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (241ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2021-05-25 22:48:30.8551|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2021-05-25 22:48:31.0535|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (158ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2021-05-25 22:48:31.0619|INFO|Microsoft.EntityFrameworkCore.Migrations|Applying migration '20210525171731_First'.
+2021-05-25 22:48:31.1648|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (68ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20210525171731_First', N'2.1.14-servicing-32113');
+2021-05-25 22:59:47.0016|INFO|StudentInfo.API.Program|Initializing application...
+2021-05-25 22:59:55.7816|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.1.14-servicing-32113 initialized 'StudentInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-05-25 23:00:05.4074|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (526ms) [Parameters=[], CommandType='Text', CommandTimeout='60']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [StudentInfoDB] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+END;
+2021-05-25 23:00:06.1686|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (742ms) [Parameters=[], CommandType='Text', CommandTimeout='60']
+DROP DATABASE [StudentInfoDB];
+2021-05-25 23:00:18.0844|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (1,573ms) [Parameters=[], CommandType='Text', CommandTimeout='60']
+CREATE DATABASE [StudentInfoDB];
+2021-05-25 23:00:18.5073|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (419ms) [Parameters=[], CommandType='Text', CommandTimeout='60']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [StudentInfoDB] SET READ_COMMITTED_SNAPSHOT ON;
+END;
+2021-05-25 23:00:18.8318|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (150ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);
+2021-05-25 23:00:18.9032|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (42ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2021-05-25 23:00:18.9397|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (20ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2021-05-25 23:00:18.9860|INFO|Microsoft.EntityFrameworkCore.Migrations|Applying migration '20210504162233_StudentInfoDBInitialMigration'.
+2021-05-25 23:00:19.0811|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (21ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [Students] (
+    [Id] int NOT NULL IDENTITY,
+    [First_Name] nvarchar(50) NOT NULL,
+    [Last_Name] nvarchar(50) NOT NULL,
+    [City] nvarchar(20) NOT NULL,
+    [Phone] bigint NOT NULL,
+    CONSTRAINT [PK_Students] PRIMARY KEY ([Id])
+);
+2021-05-25 23:00:19.0971|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (8ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20210504162233_StudentInfoDBInitialMigration', N'2.1.14-servicing-32113');
+2021-05-25 23:00:19.1746|INFO|Microsoft.EntityFrameworkCore.Migrations|Applying migration '20210504162904_SampleData'.
+2021-05-25 23:00:19.6545|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (395ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'City', N'First_Name', N'Last_Name', N'Phone') AND [object_id] = OBJECT_ID(N'[Students]'))
+    SET IDENTITY_INSERT [Students] ON;
+INSERT INTO [Students] ([Id], [City], [First_Name], [Last_Name], [Phone])
+VALUES (1, N'Pune', N'Parth', N'Darekar', CAST(9876543210 AS bigint));
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'City', N'First_Name', N'Last_Name', N'Phone') AND [object_id] = OBJECT_ID(N'[Students]'))
+    SET IDENTITY_INSERT [Students] OFF;
+2021-05-25 23:00:19.6944|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (33ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'City', N'First_Name', N'Last_Name', N'Phone') AND [object_id] = OBJECT_ID(N'[Students]'))
+    SET IDENTITY_INSERT [Students] ON;
+INSERT INTO [Students] ([Id], [City], [First_Name], [Last_Name], [Phone])
+VALUES (2, N'Satara', N'Nupur', N'Darekar', CAST(76543234567 AS bigint));
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'City', N'First_Name', N'Last_Name', N'Phone') AND [object_id] = OBJECT_ID(N'[Students]'))
+    SET IDENTITY_INSERT [Students] OFF;
+2021-05-25 23:00:19.7273|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (28ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'City', N'First_Name', N'Last_Name', N'Phone') AND [object_id] = OBJECT_ID(N'[Students]'))
+    SET IDENTITY_INSERT [Students] ON;
+INSERT INTO [Students] ([Id], [City], [First_Name], [Last_Name], [Phone])
+VALUES (3, N'Kolhapur', N'Nachiket', N'Joshi', CAST(1234567890 AS bigint));
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'City', N'First_Name', N'Last_Name', N'Phone') AND [object_id] = OBJECT_ID(N'[Students]'))
+    SET IDENTITY_INSERT [Students] OFF;
+2021-05-25 23:00:19.7345|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20210504162904_SampleData', N'2.1.14-servicing-32113');
+2021-05-25 23:00:19.7460|INFO|Microsoft.EntityFrameworkCore.Migrations|Applying migration '20210525171731_First'.
+2021-05-25 23:00:19.7460|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20210525171731_First', N'2.1.14-servicing-32113');
+2021-05-25 23:00:20.3381|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager|User profile is available. Using 'C:\Users\OWNER\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-05-25 23:00:23.1728|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:44349/  
+2021-05-25 23:00:23.1728|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 DEBUG http://localhost:33402/  0
+2021-05-25 23:00:23.3927|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 194.1406ms 200 
+2021-05-25 23:00:23.8998|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 738.1222ms 404 text/plain
+2021-05-25 23:00:46.0840|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:33402/api/students  
+2021-05-25 23:00:46.5396|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Route matched with {action = "GetStudents", controller = "Student"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetStudents() on controller StudentInfo.API.Controllers.StudentController (StudentInfo.API).
+2021-05-25 23:00:46.6641|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method StudentInfo.API.Controllers.StudentController.GetStudents (StudentInfo.API) - Validation state: Valid
+2021-05-25 23:00:46.7484|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.1.14-servicing-32113 initialized 'StudentInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-05-25 23:00:47.6027|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (101ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[City], [c].[First_Name], [c].[Last_Name], [c].[Phone]
+FROM [Students] AS [c]
+ORDER BY [c].[Id]
+2021-05-25 23:00:48.0351|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action method StudentInfo.API.Controllers.StudentController.GetStudents (StudentInfo.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1354.6879ms.
+2021-05-25 23:00:48.0550|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor|Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[StudentInfo.API.Models.StudentDto, StudentInfo.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2021-05-25 23:00:48.3679|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action StudentInfo.API.Controllers.StudentController.GetStudents (StudentInfo.API) in 1800.9546ms
+2021-05-25 23:00:48.3955|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 2320.2298ms 200 application/json; charset=utf-8

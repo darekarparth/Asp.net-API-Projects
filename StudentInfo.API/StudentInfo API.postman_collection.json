@@ -1,0 +1,150 @@
+{
+	"info": {
+		"_postman_id": "9779d232-d009-45e3-af17-68c16f94f3db",
+		"name": "StudentInfo API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Students",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:33402/api/students",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "33402",
+					"path": [
+						"api",
+						"students"
+					]
+				},
+				"description": "All Students"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Particular Student",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:33402/api/students/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "33402",
+					"path": [
+						"api",
+						"students",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Create student",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"Id\": \"5\",\r\n   \"First_name\":\"Rama\",\r\n   \"Last_Name\" : \"Darekar\",\r\n   \"City\": \"Mangrool\",\r\n   \"Phone\":\"12345678\" \r\n\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:33402/api/students/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "33402",
+					"path": [
+						"api",
+						"students",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT update existing students",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Id\": 5,\r\n    \"First_Name\": \"Updated - Vasant\",\r\n    \"Last_Name\" : \"Updated - Darekar\",\r\n    \"City\" : \"Updated - Pune\", \r\n    \"Phone\" : 1234567890 \r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:33402/api/students/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "33402",
+					"path": [
+						"api",
+						"students",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patch Update particular property of particular student",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Delete particular student",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:33402/api/students/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "33402",
+					"path": [
+						"api",
+						"students",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Test database",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	]
+}

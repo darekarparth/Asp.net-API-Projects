@@ -1,0 +1,73 @@
+2021-06-04 10:08:20.6540|INFO|StudentInfo.API.Program|Initializing application...
+2021-06-04 10:08:29.0029|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.1.14-servicing-32113 initialized 'StudentInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-06-04 10:08:30.3335|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (185ms) [Parameters=[], CommandType='Text', CommandTimeout='60']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [StudentInfoDB] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+END;
+2021-06-04 10:08:30.7381|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (220ms) [Parameters=[], CommandType='Text', CommandTimeout='60']
+DROP DATABASE [StudentInfoDB];
+2021-06-04 10:08:43.1242|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (2,061ms) [Parameters=[], CommandType='Text', CommandTimeout='60']
+CREATE DATABASE [StudentInfoDB];
+2021-06-04 10:08:43.9116|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (787ms) [Parameters=[], CommandType='Text', CommandTimeout='60']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [StudentInfoDB] SET READ_COMMITTED_SNAPSHOT ON;
+END;
+2021-06-04 10:08:44.1337|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (16ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);
+2021-06-04 10:08:44.1902|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (55ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2021-06-04 10:08:44.2016|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (10ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2021-06-04 10:08:44.2131|INFO|Microsoft.EntityFrameworkCore.Migrations|Applying migration '20210504162233_StudentInfoDBInitialMigration'.
+2021-06-04 10:08:44.2782|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [Students] (
+    [Id] int NOT NULL IDENTITY,
+    [First_Name] nvarchar(50) NOT NULL,
+    [Last_Name] nvarchar(50) NOT NULL,
+    [City] nvarchar(20) NOT NULL,
+    [Phone] bigint NOT NULL,
+    CONSTRAINT [PK_Students] PRIMARY KEY ([Id])
+);
+2021-06-04 10:08:44.2981|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (19ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20210504162233_StudentInfoDBInitialMigration', N'2.1.14-servicing-32113');
+2021-06-04 10:08:44.2981|INFO|Microsoft.EntityFrameworkCore.Migrations|Applying migration '20210504162904_SampleData'.
+2021-06-04 10:08:44.5181|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (171ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'City', N'First_Name', N'Last_Name', N'Phone') AND [object_id] = OBJECT_ID(N'[Students]'))
+    SET IDENTITY_INSERT [Students] ON;
+INSERT INTO [Students] ([Id], [City], [First_Name], [Last_Name], [Phone])
+VALUES (1, N'Pune', N'Parth', N'Darekar', CAST(9876543210 AS bigint));
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'City', N'First_Name', N'Last_Name', N'Phone') AND [object_id] = OBJECT_ID(N'[Students]'))
+    SET IDENTITY_INSERT [Students] OFF;
+2021-06-04 10:08:44.5442|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (25ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'City', N'First_Name', N'Last_Name', N'Phone') AND [object_id] = OBJECT_ID(N'[Students]'))
+    SET IDENTITY_INSERT [Students] ON;
+INSERT INTO [Students] ([Id], [City], [First_Name], [Last_Name], [Phone])
+VALUES (2, N'Satara', N'Nupur', N'Darekar', CAST(76543234567 AS bigint));
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'City', N'First_Name', N'Last_Name', N'Phone') AND [object_id] = OBJECT_ID(N'[Students]'))
+    SET IDENTITY_INSERT [Students] OFF;
+2021-06-04 10:08:44.5740|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (29ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'City', N'First_Name', N'Last_Name', N'Phone') AND [object_id] = OBJECT_ID(N'[Students]'))
+    SET IDENTITY_INSERT [Students] ON;
+INSERT INTO [Students] ([Id], [City], [First_Name], [Last_Name], [Phone])
+VALUES (3, N'Kolhapur', N'Nachiket', N'Joshi', CAST(1234567890 AS bigint));
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'City', N'First_Name', N'Last_Name', N'Phone') AND [object_id] = OBJECT_ID(N'[Students]'))
+    SET IDENTITY_INSERT [Students] OFF;
+2021-06-04 10:08:44.5740|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20210504162904_SampleData', N'2.1.14-servicing-32113');
+2021-06-04 10:08:44.5740|INFO|Microsoft.EntityFrameworkCore.Migrations|Applying migration '20210525171731_First'.
+2021-06-04 10:08:44.5915|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20210525171731_First', N'2.1.14-servicing-32113');
+2021-06-04 10:08:44.7906|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager|User profile is available. Using 'C:\Users\OWNER\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-06-04 10:08:47.1766|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:44349/  
+2021-06-04 10:08:47.6137|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 437.4162ms 404 text/plain

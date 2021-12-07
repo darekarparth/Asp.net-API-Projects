@@ -1,0 +1,9 @@
+G:\ezest\MY_WORK\StateInfo\StateInfo.API\obj\Debug\netcoreapp3.1\StateInfo.API.csprojAssemblyReference.cache
+G:\ezest\MY_WORK\StateInfo\StateInfo.API\obj\Debug\netcoreapp3.1\StateInfo.API.AssemblyInfoInputs.cache
+G:\ezest\MY_WORK\StateInfo\StateInfo.API\obj\Debug\netcoreapp3.1\StateInfo.API.AssemblyInfo.cs
+G:\ezest\MY_WORK\StateInfo\StateInfo.API\obj\Debug\netcoreapp3.1\StateInfo.API.TagHelpers.input.cache
+G:\ezest\MY_WORK\StateInfo\StateInfo.API\obj\Debug\netcoreapp3.1\StateInfo.API.TagHelpers.output.cache
+G:\ezest\MY_WORK\StateInfo\StateInfo.API\obj\Debug\netcoreapp3.1\StateInfo.API.csproj.CoreCompileInputs.cache
+G:\ezest\MY_WORK\StateInfo\StateInfo.API\obj\Debug\netcoreapp3.1\StateInfo.API.MvcApplicationPartsAssemblyInfo.cache
+G:\ezest\MY_WORK\StateInfo\StateInfo.API\obj\Debug\netcoreapp3.1\StateInfo.API.dll
+G:\ezest\MY_WORK\StateInfo\StateInfo.API\obj\Debug\netcoreapp3.1\StateInfo.API.pdb

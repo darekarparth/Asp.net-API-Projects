@@ -1,0 +1,256 @@
+2021-05-06 14:59:19.9137|INFO|StudentInfo.API.Program|Initializing application...
+2021-05-06 14:59:28.5265|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.1.14-servicing-32113 initialized 'StudentInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-05-06 14:59:43.3672|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (278ms) [Parameters=[], CommandType='Text', CommandTimeout='60']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [StudentInfoDB] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+END;
+2021-05-06 14:59:44.0377|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (656ms) [Parameters=[], CommandType='Text', CommandTimeout='60']
+DROP DATABASE [StudentInfoDB];
+2021-05-06 14:59:55.7156|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (1,435ms) [Parameters=[], CommandType='Text', CommandTimeout='60']
+CREATE DATABASE [StudentInfoDB];
+2021-05-06 14:59:56.0381|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (319ms) [Parameters=[], CommandType='Text', CommandTimeout='60']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [StudentInfoDB] SET READ_COMMITTED_SNAPSHOT ON;
+END;
+2021-05-06 14:59:56.5080|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (130ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);
+2021-05-06 14:59:56.5545|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (42ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2021-05-06 14:59:56.5727|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (14ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2021-05-06 14:59:56.6067|INFO|Microsoft.EntityFrameworkCore.Migrations|Applying migration '20210504162233_StudentInfoDBInitialMigration'.
+2021-05-06 14:59:56.7048|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (17ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [Students] (
+    [Id] int NOT NULL IDENTITY,
+    [First_Name] nvarchar(50) NOT NULL,
+    [Last_Name] nvarchar(50) NOT NULL,
+    [City] nvarchar(20) NOT NULL,
+    [Phone] bigint NOT NULL,
+    CONSTRAINT [PK_Students] PRIMARY KEY ([Id])
+);
+2021-05-06 14:59:56.7551|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (24ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20210504162233_StudentInfoDBInitialMigration', N'2.1.14-servicing-32113');
+2021-05-06 14:59:56.7551|INFO|Microsoft.EntityFrameworkCore.Migrations|Applying migration '20210504162904_SampleData'.
+2021-05-06 14:59:56.9727|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (178ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'City', N'First_Name', N'Last_Name', N'Phone') AND [object_id] = OBJECT_ID(N'[Students]'))
+    SET IDENTITY_INSERT [Students] ON;
+INSERT INTO [Students] ([Id], [City], [First_Name], [Last_Name], [Phone])
+VALUES (1, N'Pune', N'Parth', N'Darekar', CAST(9876543210 AS bigint));
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'City', N'First_Name', N'Last_Name', N'Phone') AND [object_id] = OBJECT_ID(N'[Students]'))
+    SET IDENTITY_INSERT [Students] OFF;
+2021-05-06 14:59:56.9914|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (15ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'City', N'First_Name', N'Last_Name', N'Phone') AND [object_id] = OBJECT_ID(N'[Students]'))
+    SET IDENTITY_INSERT [Students] ON;
+INSERT INTO [Students] ([Id], [City], [First_Name], [Last_Name], [Phone])
+VALUES (2, N'Satara', N'Nupur', N'Darekar', CAST(76543234567 AS bigint));
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'City', N'First_Name', N'Last_Name', N'Phone') AND [object_id] = OBJECT_ID(N'[Students]'))
+    SET IDENTITY_INSERT [Students] OFF;
+2021-05-06 14:59:57.0100|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (14ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'City', N'First_Name', N'Last_Name', N'Phone') AND [object_id] = OBJECT_ID(N'[Students]'))
+    SET IDENTITY_INSERT [Students] ON;
+INSERT INTO [Students] ([Id], [City], [First_Name], [Last_Name], [Phone])
+VALUES (3, N'Kolhapur', N'Nachiket', N'Joshi', CAST(1234567890 AS bigint));
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'City', N'First_Name', N'Last_Name', N'Phone') AND [object_id] = OBJECT_ID(N'[Students]'))
+    SET IDENTITY_INSERT [Students] OFF;
+2021-05-06 14:59:57.0100|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20210504162904_SampleData', N'2.1.14-servicing-32113');
+2021-05-06 14:59:57.2565|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager|User profile is available. Using 'C:\Users\OWNER\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-05-06 14:59:59.0319|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 DEBUG http://localhost:33402/  0
+2021-05-06 14:59:59.0319|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 DELETE http://localhost:33402/api/students/4  
+2021-05-06 14:59:59.0338|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:44349/  
+2021-05-06 14:59:59.0969|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 76.4788ms 200 
+2021-05-06 14:59:59.5095|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 484.7762ms 404 
+2021-05-06 14:59:59.6900|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Route matched with {action = "DeleteStudent", controller = "Student"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult DeleteStudent(Int32) on controller StudentInfo.API.Controllers.StudentController (StudentInfo.API).
+2021-05-06 14:59:59.8149|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method StudentInfo.API.Controllers.StudentController.DeleteStudent (StudentInfo.API) - Validation state: Valid
+2021-05-06 14:59:59.9240|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.1.14-servicing-32113 initialized 'StudentInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-05-06 15:00:00.7982|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (34ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Students] AS [c]
+        WHERE [c].[Id] = @__id_0)
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2021-05-06 15:00:00.8748|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action method StudentInfo.API.Controllers.StudentController.DeleteStudent (StudentInfo.API), returned result Microsoft.AspNetCore.Mvc.NotFoundResult in 1047.2177ms.
+2021-05-06 15:00:00.8939|INFO|Microsoft.AspNetCore.Mvc.StatusCodeResult|Executing HttpStatusCodeResult, setting HTTP status code 404
+2021-05-06 15:00:00.9111|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action StudentInfo.API.Controllers.StudentController.DeleteStudent (StudentInfo.API) in 1204.3665ms
+2021-05-06 15:00:00.9322|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 1908.5605ms 404 
+2021-05-06 15:00:08.3075|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 DELETE http://localhost:33402/api/students/4  
+2021-05-06 15:00:08.3215|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Route matched with {action = "DeleteStudent", controller = "Student"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult DeleteStudent(Int32) on controller StudentInfo.API.Controllers.StudentController (StudentInfo.API).
+2021-05-06 15:00:08.3307|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method StudentInfo.API.Controllers.StudentController.DeleteStudent (StudentInfo.API) - Validation state: Valid
+2021-05-06 15:00:08.3307|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.1.14-servicing-32113 initialized 'StudentInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-05-06 15:00:08.3806|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Students] AS [c]
+        WHERE [c].[Id] = @__id_0)
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2021-05-06 15:00:08.3806|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action method StudentInfo.API.Controllers.StudentController.DeleteStudent (StudentInfo.API), returned result Microsoft.AspNetCore.Mvc.NotFoundResult in 48.3626ms.
+2021-05-06 15:00:08.3806|INFO|Microsoft.AspNetCore.Mvc.StatusCodeResult|Executing HttpStatusCodeResult, setting HTTP status code 404
+2021-05-06 15:00:08.4106|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action StudentInfo.API.Controllers.StudentController.DeleteStudent (StudentInfo.API) in 68.7857ms
+2021-05-06 15:00:08.4106|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 112.4662ms 404 
+2021-05-06 15:00:14.9065|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 DELETE http://localhost:33402/api/students/3  
+2021-05-06 15:00:14.9253|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Route matched with {action = "DeleteStudent", controller = "Student"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult DeleteStudent(Int32) on controller StudentInfo.API.Controllers.StudentController (StudentInfo.API).
+2021-05-06 15:00:14.9253|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method StudentInfo.API.Controllers.StudentController.DeleteStudent (StudentInfo.API) - Validation state: Valid
+2021-05-06 15:00:14.9411|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.1.14-servicing-32113 initialized 'StudentInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-05-06 15:00:14.9411|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Students] AS [c]
+        WHERE [c].[Id] = @__id_0)
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2021-05-06 15:00:15.2521|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (6ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[City], [c].[First_Name], [c].[Last_Name], [c].[Phone]
+FROM [Students] AS [c]
+WHERE [c].[Id] = @__id_0
+2021-05-06 15:00:15.3774|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+DELETE FROM [Students]
+WHERE [Id] = @p0;
+SELECT @@ROWCOUNT;
+2021-05-06 15:00:15.3774|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action method StudentInfo.API.Controllers.StudentController.DeleteStudent (StudentInfo.API), returned result Microsoft.AspNetCore.Mvc.NoContentResult in 451.9573ms.
+2021-05-06 15:00:15.3956|INFO|Microsoft.AspNetCore.Mvc.StatusCodeResult|Executing HttpStatusCodeResult, setting HTTP status code 204
+2021-05-06 15:00:15.3956|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action StudentInfo.API.Controllers.StudentController.DeleteStudent (StudentInfo.API) in 470.6221ms
+2021-05-06 15:00:15.4121|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 502.1452ms 204 
+2021-05-06 15:00:54.9384|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 POST http://localhost:33402/api/students/create application/json 112
+2021-05-06 15:00:54.9534|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Route matched with {action = "CreatStudents", controller = "Student"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult CreatStudents(StudentInfo.API.Models.StudentCreationDto) on controller StudentInfo.API.Controllers.StudentController (StudentInfo.API).
+2021-05-06 15:00:55.3592|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method StudentInfo.API.Controllers.StudentController.CreatStudents (StudentInfo.API) - Validation state: Valid
+2021-05-06 15:00:55.4083|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.1.14-servicing-32113 initialized 'StudentInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-05-06 15:00:55.5259|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (44ms) [Parameters=[@p0='?' (Size = 20), @p1='?' (Size = 50), @p2='?' (Size = 50), @p3='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Students] ([City], [First_Name], [Last_Name], [Phone])
+VALUES (@p0, @p1, @p2, @p3);
+SELECT [Id]
+FROM [Students]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2021-05-06 15:00:55.5860|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action method StudentInfo.API.Controllers.StudentController.CreatStudents (StudentInfo.API), returned result Microsoft.AspNetCore.Mvc.CreatedAtRouteResult in 219.9443ms.
+2021-05-06 15:00:55.6352|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor|Executing ObjectResult, writing value of type 'StudentInfo.API.Models.StudentDto'.
+2021-05-06 15:00:55.7912|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action StudentInfo.API.Controllers.StudentController.CreatStudents (StudentInfo.API) in 832.262ms
+2021-05-06 15:00:55.8006|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 861.3643ms 201 application/json; charset=utf-8
+2021-05-06 15:01:37.8923|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 DELETE http://localhost:33402/api/students/4  
+2021-05-06 15:01:37.9143|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Route matched with {action = "DeleteStudent", controller = "Student"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult DeleteStudent(Int32) on controller StudentInfo.API.Controllers.StudentController (StudentInfo.API).
+2021-05-06 15:01:37.9509|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method StudentInfo.API.Controllers.StudentController.DeleteStudent (StudentInfo.API) - Validation state: Valid
+2021-05-06 15:01:37.9622|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.1.14-servicing-32113 initialized 'StudentInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-05-06 15:01:37.9748|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Students] AS [c]
+        WHERE [c].[Id] = @__id_0)
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2021-05-06 15:01:37.9748|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[City], [c].[First_Name], [c].[Last_Name], [c].[Phone]
+FROM [Students] AS [c]
+WHERE [c].[Id] = @__id_0
+2021-05-06 15:01:37.9879|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+DELETE FROM [Students]
+WHERE [Id] = @p0;
+SELECT @@ROWCOUNT;
+2021-05-06 15:01:38.0925|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action method StudentInfo.API.Controllers.StudentController.DeleteStudent (StudentInfo.API), returned result Microsoft.AspNetCore.Mvc.NoContentResult in 133.1778ms.
+2021-05-06 15:01:38.0958|INFO|Microsoft.AspNetCore.Mvc.StatusCodeResult|Executing HttpStatusCodeResult, setting HTTP status code 204
+2021-05-06 15:01:38.0958|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action StudentInfo.API.Controllers.StudentController.DeleteStudent (StudentInfo.API) in 182.3607ms
+2021-05-06 15:01:38.1283|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 212.7291ms 204 
+2021-05-06 15:02:29.4232|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 POST http://localhost:33402/api/students/create application/json 112
+2021-05-06 15:02:29.4349|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Route matched with {action = "CreatStudents", controller = "Student"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult CreatStudents(StudentInfo.API.Models.StudentCreationDto) on controller StudentInfo.API.Controllers.StudentController (StudentInfo.API).
+2021-05-06 15:02:29.4465|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method StudentInfo.API.Controllers.StudentController.CreatStudents (StudentInfo.API) - Validation state: Valid
+2021-05-06 15:02:29.4465|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.1.14-servicing-32113 initialized 'StudentInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-05-06 15:02:29.4596|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 20), @p1='?' (Size = 50), @p2='?' (Size = 50), @p3='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Students] ([City], [First_Name], [Last_Name], [Phone])
+VALUES (@p0, @p1, @p2, @p3);
+SELECT [Id]
+FROM [Students]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2021-05-06 15:02:29.4964|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action method StudentInfo.API.Controllers.StudentController.CreatStudents (StudentInfo.API), returned result Microsoft.AspNetCore.Mvc.CreatedAtRouteResult in 45.3603ms.
+2021-05-06 15:02:29.5303|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor|Executing ObjectResult, writing value of type 'StudentInfo.API.Models.StudentDto'.
+2021-05-06 15:02:29.5421|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action StudentInfo.API.Controllers.StudentController.CreatStudents (StudentInfo.API) in 97.654ms
+2021-05-06 15:02:29.5500|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 125.2285ms 201 application/json; charset=utf-8
+2021-05-06 22:47:43.5550|INFO|StudentInfo.API.Program|Initializing application...
+2021-05-06 22:47:48.5720|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.1.14-servicing-32113 initialized 'StudentInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-05-06 22:48:00.0138|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (766ms) [Parameters=[], CommandType='Text', CommandTimeout='60']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [StudentInfoDB] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+END;
+2021-05-06 22:48:00.6720|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (642ms) [Parameters=[], CommandType='Text', CommandTimeout='60']
+DROP DATABASE [StudentInfoDB];
+2021-05-06 22:48:13.0732|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (2,314ms) [Parameters=[], CommandType='Text', CommandTimeout='60']
+CREATE DATABASE [StudentInfoDB];
+2021-05-06 22:48:13.4373|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (353ms) [Parameters=[], CommandType='Text', CommandTimeout='60']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [StudentInfoDB] SET READ_COMMITTED_SNAPSHOT ON;
+END;
+2021-05-06 22:48:13.5468|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (7ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);
+2021-05-06 22:48:13.5570|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2021-05-06 22:48:13.5647|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2021-05-06 22:48:13.5836|INFO|Microsoft.EntityFrameworkCore.Migrations|Applying migration '20210504162233_StudentInfoDBInitialMigration'.
+2021-05-06 22:48:13.6389|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (20ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [Students] (
+    [Id] int NOT NULL IDENTITY,
+    [First_Name] nvarchar(50) NOT NULL,
+    [Last_Name] nvarchar(50) NOT NULL,
+    [City] nvarchar(20) NOT NULL,
+    [Phone] bigint NOT NULL,
+    CONSTRAINT [PK_Students] PRIMARY KEY ([Id])
+);
+2021-05-06 22:48:13.6467|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20210504162233_StudentInfoDBInitialMigration', N'2.1.14-servicing-32113');
+2021-05-06 22:48:13.6467|INFO|Microsoft.EntityFrameworkCore.Migrations|Applying migration '20210504162904_SampleData'.
+2021-05-06 22:48:13.9373|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (264ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'City', N'First_Name', N'Last_Name', N'Phone') AND [object_id] = OBJECT_ID(N'[Students]'))
+    SET IDENTITY_INSERT [Students] ON;
+INSERT INTO [Students] ([Id], [City], [First_Name], [Last_Name], [Phone])
+VALUES (1, N'Pune', N'Parth', N'Darekar', CAST(9876543210 AS bigint));
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'City', N'First_Name', N'Last_Name', N'Phone') AND [object_id] = OBJECT_ID(N'[Students]'))
+    SET IDENTITY_INSERT [Students] OFF;
+2021-05-06 22:48:13.9551|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (14ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'City', N'First_Name', N'Last_Name', N'Phone') AND [object_id] = OBJECT_ID(N'[Students]'))
+    SET IDENTITY_INSERT [Students] ON;
+INSERT INTO [Students] ([Id], [City], [First_Name], [Last_Name], [Phone])
+VALUES (2, N'Satara', N'Nupur', N'Darekar', CAST(76543234567 AS bigint));
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'City', N'First_Name', N'Last_Name', N'Phone') AND [object_id] = OBJECT_ID(N'[Students]'))
+    SET IDENTITY_INSERT [Students] OFF;
+2021-05-06 22:48:13.9720|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (13ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'City', N'First_Name', N'Last_Name', N'Phone') AND [object_id] = OBJECT_ID(N'[Students]'))
+    SET IDENTITY_INSERT [Students] ON;
+INSERT INTO [Students] ([Id], [City], [First_Name], [Last_Name], [Phone])
+VALUES (3, N'Kolhapur', N'Nachiket', N'Joshi', CAST(1234567890 AS bigint));
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'City', N'First_Name', N'Last_Name', N'Phone') AND [object_id] = OBJECT_ID(N'[Students]'))
+    SET IDENTITY_INSERT [Students] OFF;
+2021-05-06 22:48:13.9720|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20210504162904_SampleData', N'2.1.14-servicing-32113');
+2021-05-06 22:48:14.2288|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager|User profile is available. Using 'C:\Users\OWNER\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-05-06 22:48:16.4779|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:44349/  
+2021-05-06 22:48:16.4779|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 DEBUG http://localhost:33402/  0
+2021-05-06 22:48:16.5549|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 54.4446ms 200 
+2021-05-06 22:48:16.7942|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 321.8926ms 404 
+2021-05-06 22:48:27.6355|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:44349/index  
+2021-05-06 22:48:27.6469|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 9.4959ms 404 
